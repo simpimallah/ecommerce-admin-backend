@@ -47,13 +47,13 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use('/uploads', express_1.default.static('uploads'));
-app.get('/', (_req, res) => {
-    res.send('Backend is running 🚀');
-});
 ormconfig_1.AppDataSource.initialize()
     .then(() => {
     console.log('Connected to DB');
     app.use('/api/products', productRoutes_1.default);
+    app.get('/', (_req, res) => {
+        res.send('Backend is running 🚀');
+    });
     app.listen(process.env.PORT, () => console.log(`Server running at http://localhost:${process.env.PORT}`));
 })
     .catch((err) => console.error('DB connection error:', err));
