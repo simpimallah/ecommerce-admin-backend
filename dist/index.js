@@ -47,6 +47,9 @@ const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use('/uploads', express_1.default.static('uploads'));
+app.get('/', (_req, res) => {
+    res.send('Backend is running 🚀');
+});
 ormconfig_1.AppDataSource.initialize()
     .then(() => {
     console.log('Connected to DB');
